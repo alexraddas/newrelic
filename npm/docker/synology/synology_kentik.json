@@ -1,0 +1,57 @@
+{
+   "CapAdd" : [],
+   "CapDrop" : [],
+   "cmd" : "-snmp /config/config.yaml -nr_account_id\\=YOUR_ACCOUNT_ID -log_level\\=info -metrics\\=jchf -tee_logs\\=true -service_name\\=snmp -snmp_discovery_min\\=60 -snmp_discovery_on_start\\=true nr1.snmp",
+   "cpu_priority" : 50,
+   "enable_publish_all_ports" : false,
+   "enable_restart_policy" : false,
+   "enabled" : true,
+   "entrypoint_default" : "ktranslate -listen off -mapping /etc/ktranslate/config.json -geo /etc/ktranslate/GeoLite2-Country.mmdb -udrs /etc/ktranslate/udr.csv -api_devices /etc/ktranslate/devices.json -asn /etc/ktranslate/GeoLite2-ASN.mmdb -log_level info",
+   "env_variables" : [
+      {
+         "key" : "PATH",
+         "value" : "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      {
+         "key" : "NEW_RELIC_API_KEY",
+         "value" : "YOUR_API_KEY"
+      }
+   ],
+   "exporting" : false,
+   "id" : "e6efd3e4d844f3e450d62db7d7a936dee6683133e4c13334f19bac7ded92f5c7",
+   "image" : "kentik/ktranslate:latest",
+   "is_ddsm" : false,
+   "is_package" : false,
+   "links" : [],
+   "memory_limit" : 0,
+   "name" : "kentik-ktranslate",
+   "network" : [
+      {
+         "driver" : "bridge",
+         "name" : "bridge"
+      }
+   ],
+   "network_mode" : "bridge",
+   "port_bindings" : [
+      {
+         "container_port" : 8082,
+         "host_port" : 0,
+         "type" : "tcp"
+      }
+   ],
+   "privileged" : true,
+   "shortcut" : {
+      "enable_shortcut" : false,
+      "enable_status_page" : false,
+      "enable_web_page" : false,
+      "web_page_url" : ""
+   },
+   "use_host_network" : false,
+   "volume_bindings" : [
+      {
+         "host_volume_file" : "/docker/kentik",
+         "mount_point" : "/config",
+         "type" : "rw"
+      }
+   ]
+}
